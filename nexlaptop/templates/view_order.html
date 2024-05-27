@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block head %}
+<title>View Order | Nexlaptop</title>
+{% endblock %}
+
+{% block main %}
+<main class="bg-ivory">
+    <div class="container py-4">
+        <h3>Order Details</h3>
+        <form method="post" action="{{ url_for('main.view_order') }}">
+            <div class="form-group">
+                <label for="order_id">Order ID</label>
+                <input type="text" class="form-control" id="order_id" name="order_id" placeholder="Enter your order ID" required>
+            </div>
+            <button type="submit" class="btn btn-warning">View Order</button>
+        </form>
+    </div>
+</main>
+{% endblock %}

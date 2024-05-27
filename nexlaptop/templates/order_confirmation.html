@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block head %}
+<title>Order Confirmation | Nexlaptop</title>
+{% endblock %}
+
+{% block main %}
+<main class="bg-ivory">
+    <div class="container py-4">
+        <h3>Order Confirmation</h3>
+        <p><strong>Order ID:</strong> {{ order.id }}</p>
+        <p><strong>First Name:</strong> {{ order.first_name }}</p>
+        <p><strong>Last Name:</strong> {{ order.last_name }}</p>
+        <p><strong>Address:</strong> {{ order.address }}</p>
+        <p><strong>Email:</strong> {{ order.email }}</p>
+        <p><strong>Phone:</strong> {{ order.phone }}</p>
+        <p><strong>Order Date:</strong> {{ order.order_date.strftime('%d %b %Y') }}</p>
+        <p><strong>Order Time:</strong> {{ order.order_date.strftime('%H:%M') }}</p>
+        
+        <h4>Products:</h4>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Subtotal</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in products %}
+                <tr>
+                    <td>{{ item.product.brand.name }} {{ item.product.model }}</td>
+                    <td>{{ item.quantity }}</td>
+                    <td>${{ item.product.price }}</td>
+                    <td>${{ item.subtotal }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <p><strong>Total Price:</strong> ${{ total_price }}</p>
+    </div>
+</main>
+{% endblock %}

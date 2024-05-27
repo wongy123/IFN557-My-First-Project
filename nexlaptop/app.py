@@ -30,4 +30,4 @@ def format_screensize(screensize):
         return f"{screensize}"
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=False)

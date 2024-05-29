@@ -1,6 +1,21 @@
 {% extends 'base.html' %}
 {% block head %}
 <title>Shopping Cart | Nexlaptop</title>
+<style>
+    @media (max-width: 650px) {
+        .table-cart {
+            display: none;
+        }
+        .cart-card {
+            display: block;
+        }
+    }
+    @media (min-width: 650px) {
+        .cart-card {
+            display: none;
+        }
+    }
+</style>
 {% endblock %}
 
 {% block main %}
@@ -25,7 +40,7 @@
                     <td>
                         <form action="{{ url_for('main.updateCart', product_id=item.product.id) }}" method="post" class="d-flex flex-column flex-sm-row align-items-start align-items-sm-center">
                             <input type="number" name="quantity" value="{{ item.quantity }}" min="1" class="form-control mb-2 mb-sm-0 mr-sm-2" style="width: 70px;" required>
-                            <button type="submit" class="btn btn-warning w-auto">Update</button>
+                            <button type="submit" class="btn btn-warning">Update</button>
                         </form>
                     </td>
                     <td>${{ item.product.price }}</td>
@@ -37,6 +52,27 @@
                 {% endfor %}
             </tbody>
         </table>
+
+        <div class="cart-card">
+            {% for item in products %}
+            <div class="card mb-3 bg-ivory">
+                <div class="card-body">
+                    <h5 class="card-title">{{ item.product.brand.name }} {{ item.product.model }} {{ item.product.screensize | formatScreensize }}"</h5>
+                    <p class="card-text">Price: ${{ item.product.price }}</p>
+                    <p class="card-text">Subtotal: ${{ item.subtotal }}</p>
+                    <form action="{{ url_for('main.updateCart', product_id=item.product.id) }}" method="post" class="mb-2">
+                        <div class="form-group d-flex flex-column">
+                            <label for="quantity-{{ item.product.id }}">Quantity</label>
+                            <input type="number" id="quantity-{{ item.product.id }}" name="quantity" value="{{ item.quantity }}" min="1" class="form-control mb-2" style="width: 70px;" required>
+                            <button type="submit" class="btn btn-warning" style="width: 82.26px;">Update</button>
+                        </div>
+                    </form>
+                    <a href="{{ url_for('main.removeFromCart', product_id=item.product.id) }}" class="btn btn-danger">Remove</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
         <p><strong>Total Price:</strong> ${{ total_price }}</p>
         <a href="{{ url_for('main.checkout') }}" class="btn btn-warning">Proceed to Checkout</a>
         {% else %}

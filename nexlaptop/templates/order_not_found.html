@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block head %}
+<title>Order Not Found | Nexlaptop</title>
+{% endblock %}
+
+{% block main %}
+<main>
+    <div class="container my-4">
+        <h4>Order #{{ order_id }} does not exist, please try again!</h4>
+        <a href="{{ url_for('main.viewOrderGet') }}" class="btn btn-warning mt-3">Go Back</a>
+    </div>
+</main>
+{% endblock %}

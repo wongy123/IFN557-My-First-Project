@@ -1,21 +1,6 @@
 {% extends 'base.html' %}
 {% block head %}
 <title>Shopping Cart | Nexlaptop</title>
-<style>
-    @media (max-width: 650px) {
-        .table-cart {
-            display: none;
-        }
-        .cart-card {
-            display: block;
-        }
-    }
-    @media (min-width: 650px) {
-        .cart-card {
-            display: none;
-        }
-    }
-</style>
 {% endblock %}
 
 {% block main %}
@@ -57,7 +42,7 @@
             {% for item in products %}
             <div class="card mb-3 bg-ivory">
                 <div class="card-body">
-                    <h5 class="card-title"><a href="/product/{{ item.product.id }}">{{ item.product.brand.name }} {{ item.product.model }} {{ item.product.screensize | formatScreensize }}"</a></h5>
+                    <h5 class="card-title">{{ item.product.brand.name }} {{ item.product.model }} {{ item.product.screensize | formatScreensize }}"</h5>
                     <p class="card-text">Price: ${{ item.product.price }}</p>
                     <p class="card-text">Subtotal: ${{ item.subtotal }}</p>
                     <form action="{{ url_for('main.updateCart', product_id=item.product.id) }}" method="post" class="mb-2">

@@ -226,7 +226,8 @@ def submitContactForm():
         print(f'Name: {form.first_name.data} {form.last_name.data}') #Debug
         print(f'Phone number: {form.phone.data}') #Debug
         print(f'Email:{form.email.data}') #Debug
-        print(f'Question: {form.order_number.data} {form.question.data}') #Debug
+        print(f'Order Number: {form.order_number.data} ') #Debug
+        print(f'Question: {form.question.data}') #Debug
         
         db.session.add(new_contact_form)
         db.session.commit()

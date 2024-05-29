@@ -1,4 +1,4 @@
-from nexlaptop.app import create_app
+from nexlaptop import create_app
 
 app = create_app()
 

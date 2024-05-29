@@ -1,4 +1,4 @@
-from .app import db
+from . import db
 from datetime import datetime
 
 class Brand(db.Model):
@@ -54,7 +54,7 @@ class Order(db.Model):
     address = db.Column(db.String(200), nullable=False)
     email = db.Column(db.String(100), nullable=False)
     phone = db.Column(db.String(20), nullable=False)
-    order_date = db.Column(db.DateTime, default=datetime.now)
+    order_date = db.Column(db.DateTime, default=datetime.utcnow)
     total_cost = db.Column(db.Float, nullable=False)
 
 class OrderDetails(db.Model):

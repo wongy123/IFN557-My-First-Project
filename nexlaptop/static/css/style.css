@@ -1,7 +1,6 @@
 body{
     height: 100vh;
 }
-
 .jumbotron{
     background-color: black;
     background-image: url("../img/background.png");
@@ -18,7 +17,6 @@ body{
 .bg-ivory{
     background-color: ivory;
 }
-
 .card-img-top-container {
     width: 100%;
     max-height: 400px;
@@ -28,13 +26,11 @@ body{
     overflow: hidden;
     background-color: ivory;
 }
-
 .card-img-top {
     max-width: 100%;
     max-height: 100%;
     object-fit: cover;
 }
-
 .product-card-img-top-container {
     width: 100%;
     max-height: 500px;
@@ -44,17 +40,14 @@ body{
     overflow: hidden;
     background-color: ivory;
 }
-
 .product-card-img-top {
     max-width: 100%;
     max-height: 100%;
     object-fit: cover;
 }
-
 .background-container{
     flex: auto;
 }
-
 .vwrapper{
     display:flex;
     flex-direction: column;
@@ -83,4 +76,17 @@ body{
 }
 .btn-success{
     color: #212529
+}
+@media (max-width: 650px) {
+    .table-cart {
+        display: none;
+    }
+    .cart-card {
+        display: block;
+    }
+}
+@media (min-width: 650px) {
+    .cart-card {
+        display: none;
+    }
 }

@@ -159,6 +159,7 @@ def submitOrder():
         db.session.commit()
 
         session.pop('cart', None)
+        print(f'Order ID is: {order_id}') #Debug
         return redirect(url_for('main.orderConfirmation', order_id=new_order.id))
     return render_template('checkout.html', form=form)
 
@@ -222,6 +223,10 @@ def submitContactForm():
             order_number=form.order_number.data,
             question=form.question.data
         )
+        print(f'Name: {form.first_name.data} {form.last_name.data}') #Debug
+        print(f'Phone number: {form.phone.data}') #Debug
+        print(f'Email:{form.email.data}') #Debug
+        print(f'Question: {form.order_number.data} {form.question.data}') #Debug
         
         db.session.add(new_contact_form)
         db.session.commit()

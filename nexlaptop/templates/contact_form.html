@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% import "bootstrap4/form.html" as wtf %}
+
+{% block head %}
+<title>Contact Us | Nexlaptop</title>
+{% endblock %}
+
+{% block main %}
+<main class="bg-ivory">
+    <div class="container py-4">
+        <h3>Contact Us</h3>
+        <p>* are required fields</p>
+        <div class="row">
+            <div class="col-12 col-md-6">
+                {{ wtf.render_form(form) }}
+            </div>
+        </div>
+    </div>
+</main>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var submitButton = document.querySelector("form .btn");
+        if (submitButton) {
+            submitButton.classList.remove("btn-");
+            submitButton.classList.add("btn-warning");
+        }
+    });
+</script>
+{% endblock %}
